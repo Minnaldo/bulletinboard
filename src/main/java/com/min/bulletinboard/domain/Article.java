@@ -23,9 +23,8 @@ import java.util.Set;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
-@EntityListeners(AuditingEntityListener.class)
 @Entity
-public class Article {
+public class Article extends AuditingFields{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)             // 자동으로 AutoIncrement 를 사용하기 위해 사용
@@ -48,16 +47,7 @@ public class Article {
                                                                     // cascade - 양방향바인딩
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();      // 이 Article 에 연동되어 있는 Comment 는 중복을 허용하지 않고, 여기서 모아서 Collection 으로 보겠다.
 
-
-    // jpa auditing 이라는 기술을 사용.
-    // 1. config - JpaConfig 에 @EnableJpaAuditing @Configuration 추가
-    // 2. CreatedDate, CreatedBy Annotation 달기.
-    // 3. CreateBy 에 생성자를 넣어주기 위해, JpaConfig 에 설정해둔 value 로 인한 값이 들어간다.
-    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt;    // 생성일시
-    @CreatedBy @Column(nullable = false, length = 100) private String createdBy;           // 생성자
-    @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt;   // 수정일시
-    @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBy;          // 수정자
-
+    
 
     protected Article() {}
 
