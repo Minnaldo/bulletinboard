@@ -28,7 +28,7 @@ spring:
         default_batch_fetch_size: 100   # 테이블 안에 join 테이블로 가져와야 하는 row 수가 10개 정도 된다하면 쿼리가 10개 만들어질 수도 있는데, 이걸 사용하면 최대 100 개 단위로 벌크로 셀렉트 할 수 있게 해준다.
   h2:
     console:
-      enabled: true        # h2 웹 콘솔을 활성화 할거냐? - false
+      enabled: false        # h2 웹 콘솔을 활성화 할거냐? - false
   sql:
     init:
       mode: always          # resources 에 있는 data.sql 을 언제 작동시킬 것인가? - always

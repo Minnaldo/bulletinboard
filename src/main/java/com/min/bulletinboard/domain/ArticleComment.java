@@ -20,9 +20,8 @@ import java.util.Objects;
         @Index(columnList =  "createdAt"),
         @Index(columnList =  "createdBy")
 })
-@EntityListeners(AuditingEntityListener.class)
 @Entity
-public class ArticleComment {
+public class ArticleComment extends AuditingFields{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,14 +31,6 @@ public class ArticleComment {
     @Setter @ManyToOne(optional = false) private Article article;    // 게시글 (ID)
     @Setter @Column(nullable = false, length = 500) private String content;     // 본문
 
-    // jpa auditing 이라는 기술을 사용.
-    // 1. config - JpaConfig 에 @EnableJpaAuditing @Configuration 추가
-    // 2. CreatedDate, CreatedBy Annotation 달기.
-    // 3. CreateBy 에 생성자를 넣어주기 위해, JpaConfig 에 설정해둔 value 로 인한 값이 들어간다.
-    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt;    // 생성일시
-    @CreatedBy @Column(nullable = false, length = 100) private String createdBy;           // 생성자
-    @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt;   // 수정일시
-    @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBy;          // 수정자
 
     protected ArticleComment() {}
 
