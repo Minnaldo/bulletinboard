@@ -1,5 +1,6 @@
 package com.min.bulletinboard.controller;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@Disabled("SpringData REST 통합테스트는 불필요하므로 제외시킴")
 @DisplayName("Data REST Test")
 @Transactional          // 테스트에서 동작하는 Transactional 에 기본 동작은 Rollback 입니다. 그래서 모든 DataRestTest 밑에 각각의 UnitTest 들은 RollBack 상태로 트랜잭션이 묶이게 된다.
 @AutoConfigureMockMvc
