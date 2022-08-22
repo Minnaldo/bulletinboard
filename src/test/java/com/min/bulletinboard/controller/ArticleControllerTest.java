@@ -62,7 +62,7 @@ class ArticleControllerTest {
         mvc.perform(get("/articles/1"))    // MockMvc 를 통해 /articles 주소로 GET 요청
                 // mvc.perform() 의 결과를 검증
                 .andExpect(status().isOk())         // 200 상태
-                .andExpect(content().contentType(MediaType.TEXT_HTML))  // content 내용의 타입이 무엇인가?  // view니까 TEXT_HTML
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))  // content 내용의 타입이 무엇인가?  // view니까 TEXT_HTML
                 .andExpect(view().name("articles/detail"))
                 .andExpect(model().attributeExists("article"))    // 뷰는 데이터가 있어야 함. // model에 attribute가 있는지 체크
                 .andExpect(model().attributeExists("articleComments"));
@@ -80,7 +80,7 @@ class ArticleControllerTest {
         mvc.perform(get("/articles/search"))    // MockMvc 를 통해 /articles 주소로 GET 요청
                 // mvc.perform() 의 결과를 검증
                 .andExpect(status().isOk())         // 200 상태
-                .andExpect(content().contentType(MediaType.TEXT_HTML))  // content 내용의 타입이 무엇인가?  // view니까 TEXT_HTML
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))  // content 내용의 타입이 무엇인가?  // view니까 TEXT_HTML
                 .andExpect(model().attributeExists("articles/search"));
     }
 
@@ -95,7 +95,7 @@ class ArticleControllerTest {
         mvc.perform(get("/articles/search-hashtag"))    // MockMvc 를 통해 /articles 주소로 GET 요청
                 // mvc.perform() 의 결과를 검증
                 .andExpect(status().isOk())         // 200 상태
-                .andExpect(content().contentType(MediaType.TEXT_HTML))  // content 내용의 타입이 무엇인가?  // view니까 TEXT_HTML
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))  // content 내용의 타입이 무엇인가?  // view니까 TEXT_HTML
                 .andExpect(model().attributeExists("articles/search-hashtag"));
     }
 }
