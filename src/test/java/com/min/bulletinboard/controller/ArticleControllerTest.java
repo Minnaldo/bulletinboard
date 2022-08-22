@@ -51,7 +51,6 @@ class ArticleControllerTest {
                                                                         // model 애트리뷰트라는 map "articles" 라는 이름에 데이터가 있는지 검사
     }
 
-    @Disabled("구현 중")
     @DisplayName("[view] [GET] 게시글 상세 페이지 - 정상 호출") //  /articles/{article-id}
     @Test
     public void givenNothing_whenRequestingArticleView_thenReturnsArticleView() throws Exception {
@@ -64,7 +63,7 @@ class ArticleControllerTest {
                 .andExpect(status().isOk())         // 200 상태
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))  // content 내용의 타입이 무엇인가?  // view니까 TEXT_HTML
                 .andExpect(view().name("articles/detail"))
-                .andExpect(model().attributeExists("article"))    // 뷰는 데이터가 있어야 함. // model에 attribute가 있는지 체크
+                 .andExpect(model().attributeExists("article"))    // 뷰는 데이터가 있어야 함. // model에 attribute가 있는지 체크
                 .andExpect(model().attributeExists("articleComments"));
         // model 애트리뷰트라는 map "articles" 라는 이름에 데이터가 있는지 검사
     }
