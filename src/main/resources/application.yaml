@@ -31,6 +31,7 @@ spring:
   data.rest:
       base-path: /api
       detection-strategy: annotated
+  thymeleaf3.decoupuled-logic: true
 
 ---
 # yaml 파일은 --- 기준으로 새로운 document 를 만든다.
