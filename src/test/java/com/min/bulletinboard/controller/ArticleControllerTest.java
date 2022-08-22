@@ -34,7 +34,6 @@ class ArticleControllerTest {
         this.mvc = mvc;
     }
 
-    @Disabled("구현 중")
     @DisplayName("[view] [GET] 게시글 (게시판) 페이지 - 정상 호출")  // /articles
     @Test
     public void givenNothing_whenRequestingArticlesView_thenReturnsArticlesView() throws Exception {
@@ -45,7 +44,8 @@ class ArticleControllerTest {
         mvc.perform(get("/articles"))    // MockMvc 를 통해 /articles 주소로 GET 요청
                                                     // mvc.perform() 의 결과를 검증
                 .andExpect(status().isOk())         // 200 상태
-                .andExpect(content().contentType(MediaType.TEXT_HTML))  // content 내용의 타입이 무엇인가?  // view니까 TEXT_HTML
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))  // content 내용의 타입이 무엇인가?  // view니까 TEXT_HTML
+                                                                                    //contentTypeCompatibleWith : 호환되는 타입까지 맞다고 쳐준다.
                 .andExpect(view().name("articles/index"))   // 뷰에 이름에 대한 테스도 조건에 추가할 수 있다.
                 .andExpect(model().attributeExists("articles"));    // 뷰는 데이터가 있어야 함. // model에 attribute가 있는지 체크
                                                                         // model 애트리뷰트라는 map "articles" 라는 이름에 데이터가 있는지 검사
