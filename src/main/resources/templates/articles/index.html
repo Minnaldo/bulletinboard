@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>게시판 페이지</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Min Cho">
+  <title>게시판 페이지</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link href="/css/search-bar.css" rel="stylesheet">
 </head>
 
 <body>
@@ -12,32 +17,43 @@
   <header id="header"></header>
 
   <!-- 메인 페이지 - 테이블 -->
-  <main>
-    <!-- 검색창 -->
-    <form>
-      <!-- 필터: 제목, 본문, id, 닉네임, 해시태그 -->
-      <label for="search-type" hidden>유형</label>
-      <select id="search-type" name="search-type">
-        <option>제목</option>
-        <option>본문</option>
-        <option>ID</option>
-        <option>닉네임</option>
-        <option>해시태그</option>
-      </select>
-      <label for="search-value" hidden>검색어</label>
-      <input id="search-value" type="search" placeholder="검색어..." name="search-value">
-      <button type="submit">검색</button>
+  <main class="container">
 
-    </form>
+    <!-- 검색창 -->
+    <div class="row">
+      <div class="card card-margin search-form">
+        <div class="card-body p-0">
+          <form id="card search-form">
+            <div class="row">
+              <div class="col-12">
+                <div class="row no-gutters">
+                  <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                    <label for="search-type" hidden>검색 유형</label>
+                    <select class="form-control" id="search-type">
+                      <option>제목</option>
+                      <option>본문</option>
+                      <option>id</option>
+                      <option>닉네임</option>
+                      <option>해시태그</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
 
     <!-- 테이블 -->
-    <table>
+    <table class="table">
       <thead>
         <tr>  <!-- tr: 한 줄 의미 -->
-          <th>제목</th>   <!-- th: 강조 의미 -->
-          <th>해시태그</th>
-          <th>작성자</th>
-          <th>작성일</th>
+          <th class="col-6">제목</th>   <!-- th: 강조 의미 -->
+          <th class="col-2">해시태그</th>
+          <th class="col">작성자</th>
+          <th class="col">작성일</th>
         </tr>
       </thead>
       <tbody>
@@ -63,22 +79,21 @@
     </table>
 
     <!-- 네비게이션 바 -->
-    <nav>
-      <table>
-        <tr>
-          <td>previous</td>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-          <td>4</td>
-          <td>next</td>
-        </tr>
-      </table>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
     </nav>
   </main>
 
   <!-- 푸터 -->
   <footer id="footer"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 </body>
 </html>
